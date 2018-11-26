@@ -1,6 +1,6 @@
 <?php
 
-namespace LarvelFilter;
+namespace ErisRayanesh\LaravelFilter;
 
 use Illuminate\Support\Collection;
 
@@ -53,7 +53,7 @@ class Sortable
 	}
 
 	/**
-	 * @param array $actives
+	 * @param array $sortBy
 	 * @return $this
 	 */
 	public function sort($sortBy)

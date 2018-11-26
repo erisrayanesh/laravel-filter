@@ -1,6 +1,6 @@
 <?php
 
-namespace LarvelFilter;
+namespace ErisRayanesh\LaravelFilter;
 
 use Illuminate\Support\Collection;
 
