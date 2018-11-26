@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libraries;
+namespace LarvelFilter;
 
 use Illuminate\Support\Collection;
 
