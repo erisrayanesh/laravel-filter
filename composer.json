@@ -2,7 +2,6 @@
     "name": "erisrayanesh/laravel-filter",
     "description": "The laravel filter",
     "type": "library",
-    "version": "0.1.0",
     "keywords": [
         "laravel",
         "framework",

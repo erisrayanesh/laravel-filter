@@ -3,6 +3,7 @@
 namespace ErisRayanesh\LaravelFilter;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Arr;
 
 class Sortable
 {
@@ -87,9 +88,9 @@ class Sortable
 		$items = $this->getSortables();
 
 		if (isset($config['only'])) {
-			$items = $this->getSortables()->only(array_get($config, 'only', []));
+			$items = $this->getSortables()->only(Arr::get($config, 'only', []));
 		} elseif (isset($config['except'])) {
-			$items = $this->getSortables()->except(array_get($config, 'except', []));
+			$items = $this->getSortables()->except(Arr::get($config, 'except', []));
 		}
 
 		$items = $items->where('sorted', true);

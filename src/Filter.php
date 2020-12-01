@@ -3,6 +3,7 @@
 namespace ErisRayanesh\LaravelFilter;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Arr;
 
 class Filter extends Collection
 {
@@ -73,7 +74,7 @@ class Filter extends Collection
 //		if (strpos($constraints, "|") === false){
 //			$items = ["type:" . $constraints];
 //		} else {
-		$items = array_filter(explode("|", $constraints), function($item){
+		$items = Arr::where(explode("|", $constraints), function($item){
 			return !empty($item);
 		});
 //		}
@@ -85,7 +86,7 @@ class Filter extends Collection
 				continue;
 			}
 
-			$parts = array_filter(explode(":", $item), function($value){
+			$parts = Arr::where(explode(":", $item), function($value){
 				return !empty($value);
 			});
 
@@ -101,12 +102,12 @@ class Filter extends Collection
 
 	protected function isNullable($constraints)
 	{
-		return array_get($constraints, 'nullable', false);
+		return Arr::get($constraints, 'nullable', false);
 	}
 
 	protected function isArray($constraints)
 	{
-		return array_get($constraints, 'array', false);
+		return Arr::get($constraints, 'array', false);
 	}
 
 	protected function applyConstraints(&$value, $constraints)
@@ -178,7 +179,7 @@ class Filter extends Collection
 			return [$constraint];
 		}
 
-		return array_filter(explode(",", $constraint), function($item){
+		return Arr::where(explode(",", $constraint), function($item){
 			return !empty($item);
 		});
 	}
@@ -189,7 +190,7 @@ class Filter extends Collection
 			throw new \InvalidArgumentException('alias constraint must contain at least 2 parameters');
 		}
 
-		$retVal= array_filter(explode(",", $constraint), function($item){
+		$retVal= Arr::where(explode(",", $constraint), function($item){
 			return !empty($item);
 		});
 
@@ -228,7 +229,7 @@ class Filter extends Collection
 			return $value;
 		}
 
-		$field = array_get($constraint, 1, 'id');
+		$field = Arr::get($constraint, 1, 'id');
 		$multiple = in_array("multiple", $constraint);
 
 		if ($this->isArray($constraints) && is_array($value)){
