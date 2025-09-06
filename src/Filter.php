@@ -4,6 +4,7 @@ namespace ErisRayanesh\LaravelFilter;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class Filter extends Collection
 {
@@ -119,7 +120,7 @@ class Filter extends Collection
 
 		if (is_array($constraints)){
 			foreach ($constraints as $key => $constraint) {
-				$method = "apply" . title_case($key) . "Constraint";
+				$method = "apply" . Str::title($key) . "Constraint";
 				if (!method_exists($this, $method)){
 					continue;
 				}
